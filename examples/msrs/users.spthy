@@ -1,0 +1,20 @@
+theory P
+
+begin
+
+rule CreateUser:
+    [ ]
+    -->
+    [ User(username, value) ]
+
+rule UpdateUser:
+    [ User(username, value) ]
+    -->
+    [ User(username, new_value) ]
+
+rule DeleteUser:
+    [ User(username, value) ]
+    -->
+    [ ]
+
+end

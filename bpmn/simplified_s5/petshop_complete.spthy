@@ -1,0 +1,140 @@
+theory Petshop
+
+begin
+
+rule AddProduct:
+    [  ]
+    -->
+    [ Product(pi, pname, pidescription, piprice, pistock, picartItems, piorderItems) ]
+
+rule Begin:
+    [  ]
+    --[ Create(15, c), Get(0, u), Write(15, c, 13, u), Set(0, u), Set(9, c) ]->
+    [ TokPurchasingBEGINEND(t, c, o, u, ccn), Cart(c, u) ]
+
+rule AddItemToCarts:
+    [ TokPurchasingADDITEMTOCARTSSTART(t, c, o, u, ccn), Product(pi, pname, pidescription, piprice, pistock, picartItems, piorderItems) ]
+    --[ Read(1, pi, 19, pname), Create(6, ci), Write(6, ci, 3, q), Get(9, c), Write(6, ci, 12, c), Write(6, ci, 5, pi) ]->
+    [ TokPurchasingADDITEMTOCARTSEND(t, c, o, u, ccn), CartItem(ci, q, c, pi), Product(pi, pname, pidescription, piprice, pistock, picartItems, piorderItems) ]
+
+rule Checkoutenter:
+    [ TokPurchasingCHECKOUTSTART(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingCheckoutBEGINCHECKOUTSTART(t, c, o, u, ccn) ]
+
+rule BeginCheckout:
+    [ TokPurchasingCheckoutBEGINCHECKOUTSTART(t, c, o, u, ccn) ]
+    --[ Create(7, o1), Get(0, u), Write(7, o1, 13, u), Set(10, o) ]->
+    [ TokPurchasingCheckoutBEGINCHECKOUTEND(t, c, o1, u, ccn), Order(o1, u) ]
+
+rule ConvertCartitemToOrderitem:
+    [ TokPurchasingCheckoutCONVERTCARTITEMTOORDERITEMSTART(t, c, o, u, ccn), CartItem(ci, q, c, pi) ]
+    --[ Create(22, oi), Write(22, oi, 3, q), Get(10, o), Write(22, oi, 23, o), Write(22, oi, 5, pi), Read(6, ci, 25, ci), Read(6, ci, 3, q), Read(6, ci, 5, pi), Read(6, ci, 12, c), Delete(6, ci) ]->
+    [ TokPurchasingCheckoutCONVERTCARTITEMTOORDERITEMEND(t, c, o, u, ccn), OrderItem(oi, q, o, pi) ]
+
+rule EndCheckout:
+    [ TokPurchasingCheckoutENDCHECKOUTSTART(t, c, o, u, ccn), Cart(c, cuser) ]
+    --[ Delete(15, c) ]->
+    [ TokPurchasingCheckoutENDCHECKOUTEND(t, c, o, u, ccn) ]
+
+rule PurchasingCheckouttransition0:
+    [ TokPurchasingCheckoutBEGINCHECKOUTEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingCheckoutCONVERTCARTITEMTOORDERITEMSTART(t, c, o, u, ccn) ]
+
+rule PurchasingCheckouttransition1:
+    [ TokPurchasingCheckoutCONVERTCARTITEMTOORDERITEMEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingCheckoutENDCHECKOUTSTART(t, c, o, u, ccn) ]
+
+rule PurchasingCheckouttransition2:
+    [ TokPurchasingCheckoutCONVERTCARTITEMTOORDERITEMEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingCheckoutCONVERTCARTITEMTOORDERITEMSTART(t, c, o, u, ccn) ]
+
+rule Checkoutexit:
+    [ TokPurchasingCheckoutENDCHECKOUTEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingCHECKOUTEND(t, c, o, u, ccn) ]
+
+rule EnterBankDetail:
+    [ TokPurchasingENTERBANKDETAILSTART(t, c, o, u, ccn) ]
+    --[ Collect(8, cc_data), Create(18, ccn2), Write(18, ccn2, 17, cc_data), Set(4, ccn) ]->
+    [ TokPurchasingENTERBANKDETAILEND(t, c, o, u, ccn2), CreditCard(ccn2, cc_data) ]
+
+rule Buy:
+    [ TokPurchasingBUYSTART(t, c, o, u, ccn) ]
+    --[ Create(2, p), Get(4, ccn), Write(2, p, 24, ccn), Get(10, o), Write(2, p, 23, o) ]->
+    [ TokPurchasingBUYEND(t, c, o, u, ccn), Payment(p, ccn, o) ]
+
+rule CardValidate:
+    [ TokPurchasingCARDVALIDATESTART(t, c, o, u, ccn), CreditCard(ccn, cc_data) ]
+    --[ Read(18, ccn, 17, cc_data), Use(8, cc_data) ]->
+    [ TokPurchasingCARDVALIDATEEND(t, c, o, u, ccn), CreditCard(ccn, cc_data) ]
+
+rule EnterShippingAddress:
+    [ TokPurchasingENTERSHIPPINGADDRESSSTART(t, c, o, u, ccn) ]
+    --[ Collect(8, addrstr), Create(16, s), Write(16, s, 21, addrstr), Get(10, o), Write(16, s, 23, o) ]->
+    [ TokPurchasingENTERSHIPPINGADDRESSEND(t, c, o, u, ccn), Shipment(s, addrstr, o) ]
+
+rule Shipping:
+    [ TokPurchasingSHIPPINGSTART(t, c, o, u, ccn), Shipment(s, addrstr, o) ]
+    --[ Read(16, s, 21, addrstr), Read(16, s, 23, o), Use(8, addrstr) ]->
+    [ TokPurchasingSHIPPINGEND(t, c, o, u, ccn), Shipment(s, addrstr, o) ]
+
+rule End:
+    [ TokPurchasingENDSTART(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingENDEND(t, c, o, u, ccn) ]
+
+rule Purchasingtransition0:
+    [ TokPurchasingBEGINEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingADDITEMTOCARTSSTART(t, c, o, u, ccn) ]
+
+rule Purchasingtransition1:
+    [ TokPurchasingADDITEMTOCARTSEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingADDITEMTOCARTSSTART(t, c, o, u, ccn) ]
+
+rule Purchasingtransition2:
+    [ TokPurchasingADDITEMTOCARTSEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingCHECKOUTSTART(t, c, o, u, ccn) ]
+
+rule Purchasingtransition3:
+    [ TokPurchasingCHECKOUTEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingENTERBANKDETAILSTART(t, c, o, u, ccn) ]
+
+rule Purchasingtransition4:
+    [ TokPurchasingENTERBANKDETAILEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingBUYSTART(t, c, o, u, ccn) ]
+
+rule Purchasingtransition5:
+    [ TokPurchasingBUYEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingCARDVALIDATESTART(t, c, o, u, ccn) ]
+
+rule Purchasingtransition6:
+    [ TokPurchasingCARDVALIDATEEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingENTERBANKDETAILSTART(t, c, o, u, ccn) ]
+
+rule Purchasingtransition7:
+    [ TokPurchasingCARDVALIDATEEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingENTERSHIPPINGADDRESSSTART(t, c, o, u, ccn) ]
+
+rule Purchasingtransition8:
+    [ TokPurchasingENTERSHIPPINGADDRESSEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingSHIPPINGSTART(t, c, o, u, ccn) ]
+
+rule Purchasingtransition9:
+    [ TokPurchasingSHIPPINGEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingENDSTART(t, c, o, u, ccn) ]
+
+end

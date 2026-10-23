@@ -1,0 +1,8 @@
+(include_subdirs qualified)
+(library
+ (name maude)
+ (libraries unix logic)
+ (inline_tests)
+ (preprocess (pps ppx_expect)))
+(ocamllex lexer)
+(ocamlyacc parser)

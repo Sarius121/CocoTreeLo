@@ -1,0 +1,30 @@
+theory TwoPathsMulti
+
+begin
+
+rule Rule1:
+    [ ]
+    -->
+    [ P(x) ]
+
+rule Rule2:
+    [ P(x) ]
+    -->
+    [ Q(x) ]
+
+rule Rule3:
+    [ Q(x), Q(y) ]
+    --[ Path1(x, y) ]->
+    [ R(x, y) ]
+
+rule Combine:
+    [ P(x), P(y) ]
+    -->
+    [ TwoP(x, y) ]
+
+rule DirectR:
+    [ TwoP(x, y) ]
+    --[ Path2(x, y) ]->
+    [ R(x, y) ]
+
+end

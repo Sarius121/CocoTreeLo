@@ -1,0 +1,10 @@
+theory Rule1
+
+begin
+
+rule Rule1:
+    [ ]
+    -->
+    [ P(x) ]
+
+end

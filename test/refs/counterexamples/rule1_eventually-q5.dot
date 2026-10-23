@@ -1,0 +1,22 @@
+digraph g {
+"[P(v0), P*] where  : Q(5) [v0->0, v1->0, P*->[P(0)]]"
+"[P(v0), P*] where  : AX A(true U Q(5)) [v0->0, v1->0, P*->[P(0)]]"
+"[P(v0), P*] where  : A(true U Q(5)) [v0->0, v1->0, P*->[P(0)]]"
+"[P(v0), P*] where  : A(true U Q(5)) [v0->0, v1->0, P*->[P(0), P(0)]]"
+"[P(v0)] where  : Q(5) [v0->0]"
+"[P(v0)] where  : AX A(true U Q(5)) [v0->0]"
+"[P(v0)] where  : A(true U Q(5)) [v0->0]"
+"[] where  : Q(5) []"
+"[] where  : AX A(true U Q(5)) []"
+"[] where  : A(true U Q(5)) []"
+"[P(v0), P*] where  : AX A(true U Q(5)) [v0->0, v1->0, P*->[P(0)]]" -> "[P(v0), P*] where  : A(true U Q(5)) [v0->0, v1->0, P*->[P(0), P(0)]]" [label="Rule1", color="black", xlabel=""]
+"[P(v0), P*] where  : A(true U Q(5)) [v0->0, v1->0, P*->[P(0)]]" -> "[P(v0), P*] where  : Q(5) [v0->0, v1->0, P*->[P(0)]]" [style="dotted", color="black", xlabel=""]
+"[P(v0), P*] where  : A(true U Q(5)) [v0->0, v1->0, P*->[P(0)]]" -> "[P(v0), P*] where  : AX A(true U Q(5)) [v0->0, v1->0, P*->[P(0)]]" [style="dotted", color="black", xlabel=""]
+"[P(v0), P*] where  : A(true U Q(5)) [v0->0, v1->0, P*->[P(0), P(0)]]" -> "[P(v0), P*] where  : A(true U Q(5)) [v0->0, v1->0, P*->[P(0)]]" [style="dashed", label="cycle", color="black", xlabel=""]
+"[P(v0)] where  : AX A(true U Q(5)) [v0->0]" -> "[P(v0), P*] where  : A(true U Q(5)) [v0->0, v1->0, P*->[P(0)]]" [label="Rule1", color="black", xlabel=""]
+"[P(v0)] where  : A(true U Q(5)) [v0->0]" -> "[P(v0)] where  : Q(5) [v0->0]" [style="dotted", color="black", xlabel=""]
+"[P(v0)] where  : A(true U Q(5)) [v0->0]" -> "[P(v0)] where  : AX A(true U Q(5)) [v0->0]" [style="dotted", color="black", xlabel=""]
+"[] where  : AX A(true U Q(5)) []" -> "[P(v0)] where  : A(true U Q(5)) [v0->0]" [label="Rule1", color="black", xlabel=""]
+"[] where  : A(true U Q(5)) []" -> "[] where  : Q(5) []" [style="dotted", color="black", xlabel=""]
+"[] where  : A(true U Q(5)) []" -> "[] where  : AX A(true U Q(5)) []" [style="dotted", color="black", xlabel=""]
+}

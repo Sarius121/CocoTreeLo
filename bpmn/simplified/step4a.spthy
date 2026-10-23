@@ -1,0 +1,35 @@
+theory Petshop
+
+begin
+
+rule EnterBankDetail:
+    [ TokPurchasingENTERBANKDETAILSTART(t, c, o, u, ccn) ]
+    --[ Collect(8, ccname), Create(18, ccn2), Writeccn2(18, 17, ccname), Set(4, ccn) ]->
+    [ TokPurchasingENTERBANKDETAILEND(t, c, o, u, ccn2), CreditCard(ccname) ]
+
+rule Buy:
+    [ TokPurchasingBUYSTART(t, c, o, u, ccn) ]
+    --[ Create(2, p), Get(4, ccn), Write(2, p, 24, ccn), Get(10, o), Write(2, p, 23, o) ]->
+    [ TokPurchasingBUYEND(t, c, o, u, ccn), Payment(p, ccn, o) ]
+
+rule CardValidate:
+    [ TokPurchasingCARDVALIDATESTART(t, c, o, u, ccn), CreditCard(ccname) ]
+    --[ Readccn(18, 17, ccname), Use(8, ccname) ]->
+    [ TokPurchasingCARDVALIDATEEND(t, c, o, u, ccn), CreditCard(ccname) ]
+
+rule Purchasingtransition3:
+    [ ]
+    -->
+    [ TokPurchasingENTERBANKDETAILSTART(t, c, o, u, ccn) ]
+
+rule Purchasingtransition4:
+    [ TokPurchasingENTERBANKDETAILEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingBUYSTART(t, c, o, u, ccn) ]
+
+rule Purchasingtransition5:
+    [ TokPurchasingBUYEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingCARDVALIDATESTART(t, c, o, u, ccn) ]
+
+end

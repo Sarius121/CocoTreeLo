@@ -1,0 +1,30 @@
+theory TwoPaths
+
+begin
+
+rule Rule1:
+    [ ]
+    -->
+    [ P(x) ]
+
+rule Rule2a:
+    [ P(x) ]
+    -->
+    [ Q1(x,y) ]
+
+rule Rule2b:
+    [ P(x) ]
+    -->
+    [ Q2(x,y) ]
+
+rule Rule3a:
+    [ Q1(x,y) ]
+    --[ Path1(x) ]->
+    [ R(x) ]
+
+rule Rule3b:
+    [ Q2(x,y) ]
+    --[ Path2(x) ]->
+    [ R(x) ]
+
+end

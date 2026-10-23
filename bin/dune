@@ -1,0 +1,9 @@
+(executable
+ (public_name cocotreelo)
+ (name main)
+ (libraries cocotreelo))
+
+(executable
+ (public_name cocotreelo-eval)
+ (name eval)
+ (libraries cocotreelo))

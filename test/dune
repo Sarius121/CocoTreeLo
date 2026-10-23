@@ -1,0 +1,3 @@
+(executable
+ (name test_cocotreelo)
+ (libraries cocotreelo alcotest))

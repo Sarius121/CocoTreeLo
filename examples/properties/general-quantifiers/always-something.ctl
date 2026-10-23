@@ -1,0 +1,1 @@
+AX AG EXISTS x. P(x)

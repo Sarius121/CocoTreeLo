@@ -1,0 +1,25 @@
+theory Petshop
+
+begin
+
+rule Start:
+    [ ]
+    -->
+    [ TokPurchasingENTERSHIPPINGADDRESSSTART(t, c, o, u, ccn) ]
+
+rule EnterShippingAddress:
+    [ TokPurchasingENTERSHIPPINGADDRESSSTART(t, c, o, u, ccn) ]
+    --[ Collect(8, addrstr), Create(16, s), WriteSimple(16, 21, addrstr), Get(10, o), Write(16, s, 23, o) ]->
+    [ TokPurchasingENTERSHIPPINGADDRESSEND(t, c, o, u, ccn), Shipment(s, addrstr, o) ]
+
+rule Shipping:
+    [ TokPurchasingSHIPPINGSTART(t, c, o, u, ccn), Shipment(s, addrstr, o) ]
+    --[ ReadSimple(16, 21, addrstr), Read(16, s, 23, o), Use(8, addrstr) ]->
+    [ TokPurchasingSHIPPINGEND(t, c, o, u, ccn), Shipment(s, addrstr, o) ]
+
+rule Purchasingtransition8:
+    [ TokPurchasingENTERSHIPPINGADDRESSEND(t, c, o, u, ccn) ]
+    -->
+    [ TokPurchasingSHIPPINGSTART(t, c, o, u, ccn) ]
+
+end

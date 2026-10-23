@@ -1,0 +1,19 @@
+theory Action123
+begin
+
+rule Rule1:
+    [ ]
+    --[ ActionP(x) ]->
+    [ P(x) ]
+
+rule Rule2:
+    [ P(x) ]
+    --[ ActionQ(x) ]->
+    [ Q(x) ]
+
+rule Rule3:
+    [ Q(x) ]
+    --[ ActionR(x) ]->
+    [ R(x) ]
+
+end

@@ -1,0 +1,7 @@
+digraph g {
+"[]"
+"[Q(0)]"
+"[P(0)]"
+"[]" -> "[P(0)]" [label="Rule1", color="black", xlabel=""]
+"[P(0)]" -> "[Q(0)]" [label="Rule2", color="black", xlabel=""]
+}

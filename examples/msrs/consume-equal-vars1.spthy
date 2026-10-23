@@ -1,0 +1,15 @@
+theory ConsumeEqualVars
+
+begin
+
+rule CreatePQ:
+    [ ]
+    -->
+    [ P(x), Q(y) ]
+
+rule CreateR:
+    [ P(x), Q(x) ]
+    -->
+    [ R(x) ]
+
+end

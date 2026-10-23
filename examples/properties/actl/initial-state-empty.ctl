@@ -1,0 +1,1 @@
+FORALL x. !P(x)

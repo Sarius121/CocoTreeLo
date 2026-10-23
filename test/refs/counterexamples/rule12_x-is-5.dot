@@ -1,0 +1,5 @@
+digraph g {
+"[] where  : (= x 5) [x->6]"
+"[] where  : ∀ x. (= x 5) []"
+"[] where  : ∀ x. (= x 5) []" -> "[] where  : (= x 5) [x->6]" [style="dotted", color="black", xlabel=""]
+}

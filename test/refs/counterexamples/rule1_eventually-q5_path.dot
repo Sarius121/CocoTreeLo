@@ -1,0 +1,10 @@
+digraph g {
+"[]"
+"[P(0)]"
+"[P(0), P(0)]"
+"[P(0), P(0), P(0)]"
+"[]" -> "[P(0)]" [label="Rule1", color="black", xlabel=""]
+"[P(0)]" -> "[P(0), P(0)]" [label="Rule1", color="black", xlabel=""]
+"[P(0), P(0)]" -> "[P(0), P(0), P(0)]" [label="Rule1", color="black", xlabel=""]
+"[P(0), P(0), P(0)]" -> "[P(0), P(0)]" [style="dashed", label="cycle", color="black", xlabel=""]
+}

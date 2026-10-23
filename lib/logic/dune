@@ -1,0 +1,6 @@
+(include_subdirs qualified)
+(library
+ (name logic)
+ (libraries z3 str utils)
+ (inline_tests)
+ (preprocess (pps ppx_expect)))

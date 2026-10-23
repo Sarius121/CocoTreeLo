@@ -1,0 +1,9 @@
+digraph g {
+"[] where !Track*_P*_x : ∃ x. EX EX Q(x) []"
+"[] where !Track*_P*_x : EX EX Q(x) [x->0]"
+"[P*] where Track*_P*_x : EX Q(x) [@1->0, Track*_P*_x->true, Track*_Q*_x->false, v0->0, x->0, P*->[P(0)]]"
+"[P*, Q*] where !Track*_P*_x : Q(x) [@1->0, @2->0, Track*_P*_x->false, Track*_Q*_x->true, v0->0, x->0, P*->[], Q*->[Q(0)]]"
+"[] where !Track*_P*_x : ∃ x. EX EX Q(x) []" -> "[] where !Track*_P*_x : EX EX Q(x) [x->0]" [style="dotted", color="black", xlabel=""]
+"[] where !Track*_P*_x : EX EX Q(x) [x->0]" -> "[P*] where Track*_P*_x : EX Q(x) [@1->0, Track*_P*_x->true, Track*_Q*_x->false, v0->0, x->0, P*->[P(0)]]" [label="Rule1", color="black", xlabel=""]
+"[P*] where Track*_P*_x : EX Q(x) [@1->0, Track*_P*_x->true, Track*_Q*_x->false, v0->0, x->0, P*->[P(0)]]" -> "[P*, Q*] where !Track*_P*_x : Q(x) [@1->0, @2->0, Track*_P*_x->false, Track*_Q*_x->true, v0->0, x->0, P*->[], Q*->[Q(0)]]" [label="Rule2", color="black", xlabel=""]
+}

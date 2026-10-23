@@ -1,0 +1,17 @@
+digraph g {
+"[] where  : ∀ x. AX ((P(x) || Q(x)) || AX !Q(x)) []"
+"[] where  : AX ((P(x) || Q(x)) || AX !Q(x)) [x->0]"
+"[P*] where  : P(x) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]"
+"[P*] where  : Q(x) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]"
+"[P*] where  : (P(x) || Q(x)) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]"
+"[P*] where  : ((P(x) || Q(x)) || AX !Q(x)) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]"
+"[P*] where  : AX !Q(x) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]"
+"[P*, Q*] where  : !Q(x) [@1->1, @2->0, Track*_P*_x->false, Track*_Q*_x->true, v0->0, x->0, P*->([P(1)] \\ [P(0)]), Q*->[Q(0)]]"
+"[] where  : ∀ x. AX ((P(x) || Q(x)) || AX !Q(x)) []" -> "[] where  : AX ((P(x) || Q(x)) || AX !Q(x)) [x->0]" [style="dotted", color="red", xlabel=""]
+"[] where  : AX ((P(x) || Q(x)) || AX !Q(x)) [x->0]" -> "[P*] where  : ((P(x) || Q(x)) || AX !Q(x)) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]" [label="Rule1", color="red", xlabel=""]
+"[P*] where  : (P(x) || Q(x)) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]" -> "[P*] where  : P(x) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]" [style="dotted", color="black", xlabel=""]
+"[P*] where  : (P(x) || Q(x)) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]" -> "[P*] where  : Q(x) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]" [style="dotted", color="black", xlabel=""]
+"[P*] where  : ((P(x) || Q(x)) || AX !Q(x)) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]" -> "[P*] where  : (P(x) || Q(x)) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]" [style="dotted", color="black", xlabel=""]
+"[P*] where  : ((P(x) || Q(x)) || AX !Q(x)) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]" -> "[P*] where  : AX !Q(x) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]" [style="dotted", color="red", xlabel=""]
+"[P*] where  : AX !Q(x) [@1->1, Track*_P*_x->false, Track*_Q*_x->false, v0->1, x->0, P*->[P(1)]]" -> "[P*, Q*] where  : !Q(x) [@1->1, @2->0, Track*_P*_x->false, Track*_Q*_x->true, v0->0, x->0, P*->([P(1)] \\ [P(0)]), Q*->[Q(0)]]" [label="Rule2", color="red", xlabel="Removes non-existent fact or relevant unknowns"]
+}

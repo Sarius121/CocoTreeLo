@@ -1,0 +1,10 @@
+_build/
+_opam/
+cocotreelo.opam
+.vscode/
+playground/
+*.svg
+*_out/
+*.maude
+!extlib/custom-maude/*.maude
+*.log

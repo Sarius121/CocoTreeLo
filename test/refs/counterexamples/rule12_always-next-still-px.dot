@@ -1,0 +1,21 @@
+digraph g {
+"[] where  : false [x->0]"
+"[] where  : ∀ x. A((!P(x) || AX P(x)) W false) []"
+"[] where  : AX A((!P(x) || AX P(x)) W false) [x->0]"
+"[] where  : A((!P(x) || AX P(x)) W false) [x->0]"
+"[P*] where  : false [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]"
+"[P*] where  : !P(x) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]"
+"[P*] where  : (!P(x) || AX P(x)) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]"
+"[P*] where  : AX P(x) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]"
+"[P*] where  : A((!P(x) || AX P(x)) W false) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]"
+"[P*, Q*] where  : P(x) [@1->0, @2->0, CountGt1_Track*_P*_x->false, Track*_P*_x->false, v0->0, x->0, P*->[], Q*->[Q(0)]]"
+"[] where  : ∀ x. A((!P(x) || AX P(x)) W false) []" -> "[] where  : A((!P(x) || AX P(x)) W false) [x->0]" [style="dotted", color="black", xlabel=""]
+"[] where  : AX A((!P(x) || AX P(x)) W false) [x->0]" -> "[P*] where  : A((!P(x) || AX P(x)) W false) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]" [label="Rule1", color="black", xlabel=""]
+"[] where  : A((!P(x) || AX P(x)) W false) [x->0]" -> "[] where  : false [x->0]" [style="dotted", color="black", xlabel=""]
+"[] where  : A((!P(x) || AX P(x)) W false) [x->0]" -> "[] where  : AX A((!P(x) || AX P(x)) W false) [x->0]" [style="dotted", color="black", xlabel=""]
+"[P*] where  : (!P(x) || AX P(x)) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]" -> "[P*] where  : !P(x) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]" [style="dotted", color="black", xlabel=""]
+"[P*] where  : (!P(x) || AX P(x)) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]" -> "[P*] where  : AX P(x) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]" [style="dotted", color="black", xlabel=""]
+"[P*] where  : AX P(x) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]" -> "[P*, Q*] where  : P(x) [@1->0, @2->0, CountGt1_Track*_P*_x->false, Track*_P*_x->false, v0->0, x->0, P*->[], Q*->[Q(0)]]" [label="Rule2", color="orange", xlabel="Relevant (but existing) may edge"]
+"[P*] where  : A((!P(x) || AX P(x)) W false) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]" -> "[P*] where  : false [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]" [style="dotted", color="black", xlabel=""]
+"[P*] where  : A((!P(x) || AX P(x)) W false) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]" -> "[P*] where  : (!P(x) || AX P(x)) [@1->0, Track*_P*_x->true, v0->0, x->0, P*->[P(0)]]" [style="dotted", color="black", xlabel=""]
+}

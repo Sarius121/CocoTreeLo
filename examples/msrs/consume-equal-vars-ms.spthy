@@ -1,0 +1,15 @@
+theory P
+
+begin
+
+rule CreateP:
+    [ ]
+    -->
+    [ P(x) ]
+
+rule CreateQ:
+    [ P(x), P(x) ]
+    -->
+    [ Q(x) ]
+
+end

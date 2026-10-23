@@ -1,0 +1,2 @@
+(ocamllex ctl_lexer msrs_lexer)
+(ocamlyacc ctl_parser msrs_parser)

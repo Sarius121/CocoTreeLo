@@ -1,0 +1,19 @@
+digraph g {
+"[] where  : false []"
+"[] where  : AX A((!P(5) || AX Q(5)) W false) []"
+"[] where  : A((!P(5) || AX Q(5)) W false) []"
+"[P(v0)] where  : false [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]"
+"[P(v0)] where  : !P(5) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]"
+"[P(v0)] where  : (!P(5) || AX Q(5)) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]"
+"[P(v0)] where  : AX Q(5) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]"
+"[P(v0)] where  : A((!P(5) || AX Q(5)) W false) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]"
+"[P(v0), P*] where  : Q(5) [@1->5, @2->0, Track*_P*_5->true, Track*_Q*_5->false, v0->0, v1->5, P*->[P(5)]]"
+"[] where  : AX A((!P(5) || AX Q(5)) W false) []" -> "[P(v0)] where  : A((!P(5) || AX Q(5)) W false) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]" [label="Rule1", color="black", xlabel=""]
+"[] where  : A((!P(5) || AX Q(5)) W false) []" -> "[] where  : false []" [style="dotted", color="black", xlabel=""]
+"[] where  : A((!P(5) || AX Q(5)) W false) []" -> "[] where  : AX A((!P(5) || AX Q(5)) W false) []" [style="dotted", color="black", xlabel=""]
+"[P(v0)] where  : (!P(5) || AX Q(5)) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]" -> "[P(v0)] where  : !P(5) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]" [style="dotted", color="black", xlabel=""]
+"[P(v0)] where  : (!P(5) || AX Q(5)) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]" -> "[P(v0)] where  : AX Q(5) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]" [style="dotted", color="black", xlabel=""]
+"[P(v0)] where  : AX Q(5) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]" -> "[P(v0), P*] where  : Q(5) [@1->5, @2->0, Track*_P*_5->true, Track*_Q*_5->false, v0->0, v1->5, P*->[P(5)]]" [label="Rule1", color="black", xlabel=""]
+"[P(v0)] where  : A((!P(5) || AX Q(5)) W false) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]" -> "[P(v0)] where  : false [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]" [style="dotted", color="black", xlabel=""]
+"[P(v0)] where  : A((!P(5) || AX Q(5)) W false) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]" -> "[P(v0)] where  : (!P(5) || AX Q(5)) [@1->5, Track*_P*_5->false, Track*_Q*_5->false, v0->5]" [style="dotted", color="black", xlabel=""]
+}

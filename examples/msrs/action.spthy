@@ -1,0 +1,14 @@
+theory Action12
+begin
+
+rule Rule1:
+    [ ]
+    --[ ActionP(x) ]->
+    [ P(x) ]
+
+rule Rule2:
+    [ P(x) ]
+    --[ ActionQ(x) ]->
+    [ Q(x) ]
+
+end

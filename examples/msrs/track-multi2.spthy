@@ -1,0 +1,20 @@
+theory P
+
+begin
+
+rule Rule1:
+    [ ]
+    -->
+    [ P(x) ]
+
+rule IdentifyTwoP:
+    [ P(x), P(x) ]
+    -->
+    [ P(x), P(x), TwoP(x) ]
+
+rule DeleteP:
+    [ P(x), TwoP(x) ]
+    -->
+    [ Deleted(x) ]
+
+end

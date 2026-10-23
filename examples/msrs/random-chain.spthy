@@ -1,0 +1,15 @@
+theory P
+
+begin
+
+rule Rule1:
+    [ ]
+    -->
+    [ P(x) ]
+
+rule Rule2:
+    [ P(x) ]
+    -->
+    [ Q(y) ]
+
+end

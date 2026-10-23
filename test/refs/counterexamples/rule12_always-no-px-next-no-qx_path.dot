@@ -1,0 +1,8 @@
+digraph g {
+"[]"
+"[]"
+"[P(1)]"
+"(([] u ([] u ([P(1)] \\ [P(0)]))) u [Q(0)])"
+"[]" -> "[P(1)]" [label="Rule1", color="red", xlabel=""]
+"[P(1)]" -> "(([] u ([] u ([P(1)] \\ [P(0)]))) u [Q(0)])" [label="Rule2", color="red", xlabel="Removes non-existent fact or relevant unknowns"]
+}

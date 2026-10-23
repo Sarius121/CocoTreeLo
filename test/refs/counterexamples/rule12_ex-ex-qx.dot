@@ -1,0 +1,9 @@
+digraph g {
+"[] where  : EX EX ∃ x. Q(x) []"
+"[Q*] where  : Q(x) [x->0, @1->0, Track*_Q*_x->(= x 0), v0->0, Q*->[Q(0)]]"
+"[Q*] where  : ∃ x. Q(x) [@1->0, Track*_Q*_x->(= x 0), v0->0, Q*->[Q(0)]]"
+"[P(v0)] where  : EX ∃ x. Q(x) [@1->0, Track*_Q*_x->false, v0->0]"
+"[] where  : EX EX ∃ x. Q(x) []" -> "[P(v0)] where  : EX ∃ x. Q(x) [@1->0, Track*_Q*_x->false, v0->0]" [label="Rule1", color="black", xlabel=""]
+"[Q*] where  : ∃ x. Q(x) [@1->0, Track*_Q*_x->(= x 0), v0->0, Q*->[Q(0)]]" -> "[Q*] where  : Q(x) [x->0, @1->0, Track*_Q*_x->(= x 0), v0->0, Q*->[Q(0)]]" [style="dotted", color="black", xlabel=""]
+"[P(v0)] where  : EX ∃ x. Q(x) [@1->0, Track*_Q*_x->false, v0->0]" -> "[Q*] where  : ∃ x. Q(x) [@1->0, Track*_Q*_x->(= x 0), v0->0, Q*->[Q(0)]]" [label="Rule2", color="black", xlabel=""]
+}

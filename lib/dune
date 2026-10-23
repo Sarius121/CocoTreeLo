@@ -1,0 +1,6 @@
+(include_subdirs qualified)
+(library
+ (name cocotreelo)
+ (libraries str z3 ocamlgraph logic utils maude)
+ (inline_tests)
+ (preprocess (pps ppx_expect)))

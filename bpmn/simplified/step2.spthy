@@ -1,0 +1,17 @@
+theory P
+
+begin
+
+rule Start:
+    [ ] --> [ Step1(id) ]
+
+rule EnterBankDetail:
+    [ Step1(id) ] --[ Collect(x), Collect(y) ]-> [ Step2(id), CreditCard(x,y) ]
+
+rule DummyStep:
+    [ Step2(id) ] --> [ Step3(id) ]
+
+rule ValidateCard:
+    [ Step3(id), CreditCard(x,y) ] --[ Use(x), Use(y) ]-> [ Step4(id), CreditCard(x,y) ]
+
+end

@@ -1,0 +1,11 @@
+theory P
+
+begin
+
+rule EnterBankDetail:
+    [ ] --[ Collect(x) ]-> [ Step2(id), CreditCard(x) ]
+
+rule ValidateCard:
+    [ Step2(id), CreditCard(x) ] --[ Use(x) ]-> [ Step4(id), CreditCard(x) ]
+
+end

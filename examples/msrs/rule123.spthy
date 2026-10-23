@@ -1,0 +1,20 @@
+theory Rule123
+
+begin
+
+rule Rule1:
+    [ ]
+    -->
+    [ P(x) ]
+
+rule Rule2:
+    [ P(x) ]
+    -->
+    [ Q(x) ]
+
+rule Rule3:
+    [ Q(x) ]
+    -->
+    [ R(x) ]
+
+end
